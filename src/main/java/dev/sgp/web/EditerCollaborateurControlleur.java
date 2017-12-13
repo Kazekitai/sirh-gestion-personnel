@@ -63,7 +63,12 @@ public class EditerCollaborateurControlleur  extends HttpServlet {
 			msg += "</ul>";
 					
 		} else {
-			msg += "<p>matricule = "+ matricule +  ", titre = "+ titre +  ", nom = "+ nom +  ", prenom = "+ prenom +"</p>";
+			msg += "<ul>"
+			+ "<li>Matricule = "+ matricule + "</li>"
+			+ "<li>Titre = "+ titre + "</li>"
+			+ "<li>Nom = "+ nom + "</li>"
+			+ "<li>Prénom = "+ prenom + "</li>"
+			+ "</ul>";
 		}
 		// code HTML ecrit dans le corps de la reponse
 		resp.getWriter().write("<h1>Création d'un collaborateur</h1>"
