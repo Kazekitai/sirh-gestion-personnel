@@ -10,21 +10,20 @@
 dist/css/bootstrap.css">
 </head>
 <body>
-	<div id="signupbox" style="margin-top: 50px; width: 100%"
+	<div id="signupbox" style="margin-top: 50px; width: 50%"
 		class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="panel-title">Nouveau collaborateur</div>
 			</div>
 			<div class="panel-body">
-				<form id="signupform" class="form-horizontal" role="form">
+				<form id="signupform" class="form-horizontal" role="form" method="post" action="ajouter">
 
 					<div id="signupalert" style="display: none"
 						class="alert alert-danger">
 						<p>Erreur:</p>
 						<span></span>
 					</div>
-					<form methode="post">
 						<div class="form-group">
 							<label for="nom" class="col-md-3 control-label form-label">Nom</label>
 							<div class="col-md-9">
