@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="dev.sgp.entite.Departement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -64,6 +66,34 @@ dist/css/bootstrap.css">
 							<div class="col-md-9">
 								<input type="text" class="form-control" name="numSecuSocial"
 									placeholder="numéro de sécurité sociale">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="departement"
+								class="col-md-3 control-label form-label">Département </label>
+							<div class="col-md-9">
+								<select class="form-control" name="departement">
+										<%
+								            List<Departement> listeNoms = (List<Departement>) request.getAttribute("listeDepartement");
+								            for (Departement dpt : listeNoms) {
+								                String nomDpt = dpt.getNom();
+								                
+								        %>
+									<option value="<%=nomDpt%>"><%=nomDpt%></option>
+									<%
+							            }
+							        %>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="intitulePoste"
+								class="col-md-3 control-label form-label">Fonction </label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="intitulePoste"
+									placeholder="fonction">
 							</div>
 						</div>
 

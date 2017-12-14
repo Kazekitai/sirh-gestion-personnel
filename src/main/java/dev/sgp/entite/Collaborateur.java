@@ -62,6 +62,16 @@ public class Collaborateur {
 	 */
 	private Boolean actif;
 	
+	/**
+	 * L'intitulé du poste
+	 */
+	private String intitulePoste;
+	
+	/**
+	 * Département du poste
+	 */
+	private Departement departement;
+	
 	
 	/* CONSTRUCTEUR */
 	
@@ -72,6 +82,7 @@ public class Collaborateur {
 		ZonedDateTime dateHeureCreation = ZonedDateTime.now();
 		this.setDateHeureCreation(dateHeureCreation);
 		this.setActif(true);
+		this.setPhoto("https://bootdey.com/img/Content/user_1.jpg");
 	}
 	
 	/* GETTERS ET SETTERS */
@@ -81,6 +92,34 @@ public class Collaborateur {
 	 */
 	public String getMatricule() {
 		return matricule;
+	}
+
+	/**
+	 * @return the intitulePoste
+	 */
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+
+	/**
+	 * @param intitulePoste the intitulePoste to set
+	 */
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+
+	/**
+	 * @return the departement
+	 */
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	/**
+	 * @param departement the departement to set
+	 */
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
 	/**
