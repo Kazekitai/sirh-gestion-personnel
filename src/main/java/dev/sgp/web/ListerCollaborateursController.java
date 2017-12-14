@@ -13,6 +13,11 @@ import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.DepartementService;
 import dev.sgp.util.Constantes;
 
+/**
+ * Controlleur pour lister les collaborateurs
+ * @author Sandra Le Thiec
+ *
+ */
 public class ListerCollaborateursController extends HttpServlet {
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des données en mémoire)

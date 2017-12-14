@@ -4,25 +4,35 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.DepartementService;
 import dev.sgp.util.Constantes;
 
+/**
+ * Controlleur pour ajouter un collaborateur
+ * @author Sandra Le Thiec
+ *
+ */
 public class AjouterCollaborateurControlleur extends HttpServlet {
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des données en mémoire)
 	 */
 	private final CollaborateurService collabService = Constantes.COLLAB_SERVICE;
+	
+	/**
+	 * Constante pour le service technique des Départements (sauvegarde des données en mémoire)
+	 */
 	private final DepartementService deptService = Constantes.DEPT_SERVICE;
 	
+	/**
+	 * Faire une requête de type GET
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -33,6 +43,9 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 	}
 
 
+	/**
+	 * Faire une requête de type POST
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Departement> departements = deptService.listerDepartements();
