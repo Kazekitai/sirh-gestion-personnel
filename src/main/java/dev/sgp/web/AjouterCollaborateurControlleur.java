@@ -1,9 +1,7 @@
 package dev.sgp.web;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,9 +36,6 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Departement> departements = deptService.listerDepartements();
-		// recupere la valeur d'un parametre dont le nom est matricule
-//		String matricule = req.getParameter("matricule");
-
 		// recupere la valeur d'un parametre dont le nom est nom
 		String nom = req.getParameter("nom");
 
