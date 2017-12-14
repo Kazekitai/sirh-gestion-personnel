@@ -17,7 +17,7 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des données en mémoire)
 	 */
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
+	private final CollaborateurService collabService = Constantes.COLLAB_SERVICE;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -48,7 +48,7 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 
 		resp.setContentType("text/html");
 		String msg = "";
-		if (numSecuSocial == null || nom == null || prenom == null || dateNaissance == null
+		if (numSecuSocial == null || numSecuSocial.length() != 15 || numSecuSocial.matches("[0-9]+") || nom == null || prenom == null || dateNaissance == null
 				|| adresse == null) {
 			resp.setStatus(400);
 			msg += "<br>Les paramètres suivants sont incorrects: " + "<ul>";
@@ -61,23 +61,25 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 			if (dateNaissance == null) {
 				msg += "<li>date de naissance</li>";
 			}
-			if (numSecuSocial == null && numSecuSocial.length() != 15 && numSecuSocial.matches("[0-9]+")) {
-				msg += "<li>numéro de Securité Social doit contenir 15 chiffres</li>";
+			if (numSecuSocial == null ) {
+				msg += "<li>numéro de Securité Social</li>";
+			} else {
+				if (numSecuSocial.length() != 15 || numSecuSocial.matches("[0-9]+")) {
+					msg += "<li>numéro de Securité Social doit contenir 15 chiffres</li>";
+				}
 			}
+			
 			msg += "</ul>";
 			// code HTML ecrit dans le corps de la reponse
 			resp.getWriter().write("<h1>Erreur de saisie du formulaire</h1>" + msg);
 
 		} else {
 			String matricule = "M"+collabService.listerCollaborateurs().size();
-			ZonedDateTime dateHeureCreation = ZonedDateTime.now();
 			LocalDate dateN = LocalDate.parse(dateNaissance);
 			Collaborateur collab = new Collaborateur();
 			String emailPro = prenom+"."+nom+"@societe.com";
 			String photo = "";
 			collab.setAdresse(adresse);
-			collab.setDateHeureCreation(dateHeureCreation);
-			collab.setActif(true);
 			collab.setDateNaissance(dateN);
 			collab.setEmailPro(emailPro);
 			collab.setMatricule(matricule);

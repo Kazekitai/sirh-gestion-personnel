@@ -68,7 +68,11 @@ public class Collaborateur {
 	/**
 	 * Constructeur par défaut
 	 */
-	public Collaborateur() {}
+	public Collaborateur() {
+		ZonedDateTime dateHeureCreation = ZonedDateTime.now();
+		this.setDateHeureCreation(dateHeureCreation);
+		this.setActif(true);
+	}
 	
 	/* GETTERS ET SETTERS */
 

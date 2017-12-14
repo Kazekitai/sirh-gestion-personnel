@@ -23,6 +23,8 @@ dist/css/bootstrap.css">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-effect-ripple btn-primary"><i class="fa fa-search"></i></button>
                         </span>
+                        <input type="checkbox" id="checkboxActif" name="checkboxActif" class="" style="margin-left: 20px;">
+                        <span>Voir les collaborateurs désactivés</span>
                     </div>
                 </div>
             </div>
