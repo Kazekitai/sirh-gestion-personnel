@@ -125,7 +125,7 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 			collab.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals(departement)).collect(Collectors.toList()).get(0));
 			
 			collabService.sauvegarderCollaborateur(collab);
-			resp.sendRedirect("lister");
+			resp.sendRedirect("lister?choixDept=Tous");
 			
 			
 			

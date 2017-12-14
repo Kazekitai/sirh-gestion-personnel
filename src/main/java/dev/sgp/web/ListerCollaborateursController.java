@@ -1,7 +1,10 @@
 package dev.sgp.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +35,18 @@ public class ListerCollaborateursController extends HttpServlet {
 		// utilisation du service COLLAB_SERVICE
 		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
 		List<Departement> departements = deptService.listerDepartements();
-		req.setAttribute("listeNoms",collaborateurs);
+		System.out.println("choixDept: " + req.getParameter("choixDept"));
+		if(req.getParameter("choixDept") == null || req.getParameter("choixDept").equals("Tous")) {
+			List<Collaborateur> collaborateursSelect = collaborateurs;
+			req.setAttribute("listeCollab",collaborateursSelect);
+			req.setAttribute("selected","Tous");
+		} else {
+			List<Collaborateur> collaborateursSelect = collaborateurs.stream().filter(c -> c.getDepartement().getNom().equals(req.getParameter("choixDept"))).collect(Collectors.toList());
+			req.setAttribute("listeCollab",collaborateursSelect);
+			req.setAttribute("selected",req.getParameter("choixDept"));
+		}
+		
+		
 		req.setAttribute("listeDepartement",departements);
 		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
 		
