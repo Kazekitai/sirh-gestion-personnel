@@ -31,11 +31,7 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 		// utilisation du service COLLAB_SERVICE
 		List<Departement> departements = deptService.listerDepartements();
 		req.setAttribute("listeDepartement",departements);
-		try {
-			req.getRequestDispatcher("/WEB-INF/views/collab/ajouterCollaborateur.jsp").forward(req, resp);
-		  }
-		  catch (UnknownHostException uhex) {
-		  }
+		req.getRequestDispatcher("/WEB-INF/views/collab/ajouterCollaborateur.jsp").forward(req, resp);
 	}
 
 
@@ -102,11 +98,7 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 			
 			msg += "</ul>";
 			// code HTML ecrit dans le corps de la reponse
-			try {
-				resp.getWriter().write("<h1>Erreur de saisie du formulaire</h1>" + msg);
-			  }
-			  catch (UnknownHostException uhex) {
-			  }
+			resp.getWriter().write("<h1>Erreur de saisie du formulaire</h1>" + msg);
 			
 
 		} else {
@@ -125,11 +117,8 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 			collab.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals(departement)).collect(Collectors.toList()).get(0));
 			
 			collabService.sauvegarderCollaborateur(collab);
-			try {
-				resp.sendRedirect("lister");
-			  }
-			  catch (UnknownHostException uhex) {
-			  }
+			resp.sendRedirect("lister");
+			
 			
 			
 		}

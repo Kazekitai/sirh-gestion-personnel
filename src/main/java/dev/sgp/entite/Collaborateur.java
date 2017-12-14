@@ -79,8 +79,7 @@ public class Collaborateur {
 	 * Constructeur par défaut
 	 */
 	public Collaborateur() {
-		ZonedDateTime dateHeureCreation = ZonedDateTime.now();
-		this.setDateHeureCreation(dateHeureCreation);
+		this.setDateHeureCreation(ZonedDateTime.now());
 		this.setActif(true);
 		this.setPhoto("https://bootdey.com/img/Content/user_1.jpg");
 	}

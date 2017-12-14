@@ -1,7 +1,6 @@
 package dev.sgp.web;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,11 +29,7 @@ public class ListerCollaborateursController extends HttpServlet {
 		List<Departement> departements = deptService.listerDepartements();
 		req.setAttribute("listeNoms",collaborateurs);
 		req.setAttribute("listeDepartement",departements);
-
-		try {
-			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
-		  }
-		  catch (UnknownHostException uhex) {
-		  }
+		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
+		
 	}
 }
