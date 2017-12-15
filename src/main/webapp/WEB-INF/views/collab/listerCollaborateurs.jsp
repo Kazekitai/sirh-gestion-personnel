@@ -17,56 +17,55 @@
 <body style="background-color: lightgray;">
 	<h1 style="margin-left: 20px; text-align: center;">Les
 		collaborateurs</h1>
-	<div class="container bootstrap snippet">
-		<div class="row"
-			style="width: 80%; margin-left: auto; margin-right: auto;">
-			<div class="col-lg-8" style="width: 100%;">
-				<div class="panel panel-default">
-					<div class="panel-body p-t-0" style="background-color: lightgray;">
-						<div class="input-group">
-							<input type="text" id="example-input1-group2"
-								name="example-input1-group2" class="form-control"
-								placeholder="Rechercher un collaborateur"> <span
-								class="input-group-btn">
-								<button type="button" class="btn btn-effect-ripple btn-primary">
-									<i class="fa fa-search"></i>
-								</button>
-							</span> <input type="checkbox" id="checkboxActif" name="checkboxActif"
-								class="" style="margin-left: 20px;"> <span>Voir
-								les collaborateurs désactivés</span>
+	<div class="container bootstrap snippet" style="width: 100%;">
+		<form action="lister" method="get"
+			style="display: inline-table; width: 100%;">
+			<div class="row"
+				style="width: 100%; margin-left: auto; margin-right: auto; width: 100%;">
+				<div class="col-lg-8" style="width: 100%;">
+					<div class="panel panel-default">
+						<div class="panel-body p-t-0" style="background-color: lightgray;">
+							<div class="input-group">
+								<input type="text" id="rechercheCollab" name="rechercheCollab"
+									class="form-control" placeholder="Rechercher un collaborateur">
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-effect-ripple btn-primary"
+										style="margin-left: 10px;">Rechercher</button>
+								</span> <input type="checkbox" id="checkboxActif" name="checkboxActif"
+									value="checked" class="" style="margin-left: 20px;" ${checked}> <span>Voir
+									les collaborateurs désactivés</span>
+							</div>
+							<div class="row"
+								style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
+								<div class="form-group">
+									<label for="departement"
+										class="col-md-3 control-label form-label">Filtrer par
+										département</label>
+									<div class="col-md-9">
+										<div class="input-group">
+
+											<select id="choixDept" name="choixDept" class="form-control">
+												<option value="${selected}" selected>${selected}</option>
+												<c:set var="tous" value="Tous" />
+												<c:if test="${selected != tous}">
+													<option value="Tous">Tous</option>
+												</c:if>
+												<c:forEach items="${listeDepartement}" var="departements">
+													<c:if test="${departements.nom != selected}">
+														<option value="${departements.nom}">${departements.nom}</option>
+													</c:if>
+												</c:forEach>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="row"
-			style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
-			<div class="form-group">
-				<label for="departement" class="col-md-3 control-label form-label">Filtrer
-					par département</label>
-				<div class="col-md-9">
-					<div class="input-group">
-						<form action="lister" method="get" style="display: inline-table;">
-							<select id="choixDept" name="choixDept" class="form-control">
-								<option value="${selected}" selected>${selected}</option>
-								<c:set var="tous" value="Tous"/>
-								<c:if test="${selected != tous}">
-										<option value="Tous">Tous</option>
-									</c:if>
-								<c:forEach items="${listeDepartement}" var="departements">
-									<c:if test="${departements.nom != selected}">
-										<option value="${departements.nom}">${departements.nom}</option>
-									</c:if>
-								</c:forEach>
-							</select> <span class="input-group-btn">
-								<button type="submit" class="btn btn-effect-ripple btn-primary">Afficher</button>
-							</span>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+		</form>
 		<div class="row"
 			style="width: 100%; margin-left: auto; margin-right: auto;">
 			<c:forEach var="collab" items="${listeCollab}">
@@ -87,18 +86,9 @@
 									</a>
 								</div>
 								<div class="info">
-									<h4>
-										<c:out value="${collab.prenom} ${collab.nom}" />
-									</h4>
-									<p class="text-muted">
-										Fonction :
-										<c:out value="${collab.intitulePoste}" />
-									</p>
-									<p class="text-muted">
-										Département :
-										<c:out value="${collab.departement.nom}" />
-									</p>
-
+									<h4>${collab.prenom} ${collab.nom}</h4>
+									<p class="text-muted">Fonction : ${collab.intitulePoste}</p>
+									<p class="text-muted">Département :	${collab.departement.nom}</p>
 								</div>
 							</div>
 							<div class="clearfix"></div>
@@ -111,6 +101,12 @@
 								Adresse :
 								<c:out value="${collab.adresse}" />
 							</p>
+							<c:if test="${collab.actif == true}">
+								<p class="text-muted" style="color:green"><strong>Actif</strong></p>
+							</c:if>
+							<c:if test="${collab.actif == false}">
+								<p class="text-muted" style="color:red"><strong>Innactif</strong></p>
+							</c:if>
 						</div>
 					</div>
 				</div>
