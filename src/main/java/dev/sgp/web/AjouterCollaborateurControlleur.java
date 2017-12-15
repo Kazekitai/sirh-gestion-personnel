@@ -8,6 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
@@ -20,6 +24,8 @@ import dev.sgp.util.Constantes;
  *
  */
 public class AjouterCollaborateurControlleur extends HttpServlet {
+	private final Logger LOG = LoggerFactory.getLogger("logger1");
+	
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des données en mémoire)
 	 */

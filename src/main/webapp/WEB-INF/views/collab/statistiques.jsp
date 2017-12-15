@@ -30,7 +30,7 @@
 					<tbody>
 						<c:forEach var="visite" items="${listeVisites}">
 							<tr class="active">
-								<td><c:out value="${visite.chemin}" /></td>
+								<td>${visite.chemin}</td>
 								<td>Column content</td>
 								<td>Column content</td>
 								<td>Column content</td>

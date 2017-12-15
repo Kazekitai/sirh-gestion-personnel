@@ -14,6 +14,7 @@ public class StatistiqueService {
 	 * Liste des visites
 	 */
 	List<VisitWeb> VisitWeb = new ArrayList<>();
+	
 
 	/**
 	 * Récupérer la liste des visites 

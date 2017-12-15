@@ -21,6 +21,7 @@ import dev.sgp.util.Constantes;
  *
  */
 public class ListerCollaborateursController extends HttpServlet {
+
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des
 	 * données en mémoire)
@@ -103,6 +104,7 @@ public class ListerCollaborateursController extends HttpServlet {
 				collaborateursSelectByNom = collaborateursSelectByActif.stream()
 						.filter(c -> c.getNom().startsWith(req.getParameter("rechercheCollab"))).collect(Collectors.toList());
 			}
+			
 
 			req.setAttribute("listeCollab", collaborateursSelectByNom);
 			req.setAttribute("selected", req.getParameter("choixDept"));
