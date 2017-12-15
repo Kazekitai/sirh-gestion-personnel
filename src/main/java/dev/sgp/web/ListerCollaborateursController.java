@@ -2,15 +2,12 @@ package dev.sgp.web;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
@@ -51,7 +48,6 @@ public class ListerCollaborateursController extends HttpServlet {
 			collab1.setMatricule("M" + collaborateurs.size());
 			collab1.setNumSecuSocial("123456789123456");
 			collaborateurs.add(collab1);
-//			collabService.sauvegarderCollaborateur(collab1);
 
 			Collaborateur collab2 = new Collaborateur();
 			collab2.setNom("Bono");
@@ -66,10 +62,7 @@ public class ListerCollaborateursController extends HttpServlet {
 			collab2.setMatricule("M" + collaborateurs.size());
 			collab2.setNumSecuSocial("123456789123456");
 			collaborateurs.add(collab2);
-//			collabService.sauvegarderCollaborateur(collab2);
-			
 		}
-		
 		
 		
 		// Tester s'il n'y a aucun filtre
@@ -86,7 +79,6 @@ public class ListerCollaborateursController extends HttpServlet {
 			}
 			req.setAttribute("listeCollab", collaborateursSelect);
 			req.setAttribute("selected", "Tous");
-			System.out.println("passe");
 		} else {
 			// 1. filtrer le departement
 			List<Collaborateur> collaborateursSelectByDept = collaborateurs;
