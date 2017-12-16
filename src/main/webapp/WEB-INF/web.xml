@@ -25,6 +25,15 @@
 			dev.sgp.web.AjouterCollaborateurControlleur
 		</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>
+			SupprimerCollaborateurControlleur
+		</servlet-name>
+		<servlet-class>
+			dev.sgp.web.SupprimerCollaborateurControlleur
+		</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>
@@ -48,6 +57,11 @@
 	<servlet-mapping>
 		<servlet-name>AjouterCollaborateurControlleur</servlet-name>
 		<url-pattern>/collaborateurs/ajouter</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SupprimerCollaborateurControlleur</servlet-name>
+		<url-pattern>/collaborateurs/supprimer</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

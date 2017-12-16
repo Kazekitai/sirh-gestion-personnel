@@ -28,6 +28,7 @@
 				<c:url value="lister" var="collab"></c:url>
 				<c:url value="../statistiques" var="stat"></c:url>
 				<c:url value="ajouter" var="add"></c:url>
+
 				   
 				<div class="navbar-header">
 					 <a class="navbar-brand" href="collaborateurs/lister">SGP - App</a>
@@ -86,8 +87,8 @@
 								</div>
 							</div>
 							<h2>Ajouter</h2>
-							<span class="input-group-btn">
-								<a href="${add}" class="btn btn-effect-ripple btn-primary">Ajouter</a>
+							<span class="input-group-btn"> <a href="${add}"
+								class="btn btn-effect-ripple btn-primary">Ajouter</a>
 							</span>
 						</div>
 					</div>
@@ -98,6 +99,9 @@
 		<div class="row"
 			style="width: 100%; margin-left: auto; margin-right: auto;">
 			<c:forEach var="collab" items="${listeCollab}">
+				<c:url value="supprimer" var="delete">
+					<c:param name="collabMatricule" value="${collab.matricule}" />
+				</c:url>
 				<div class="col-sm-6">
 					<div class="panel">
 						<div class="panel-body p-t-10">
@@ -109,7 +113,7 @@
 									<a href="#" class="btn btn-success tooltips"
 										data-placement="top" data-toggle="tooltip"
 										data-original-title="Edit"> <i class="fa fa-pencil"></i>
-									</a> <a href="#" class="btn btn-danger tooltips"
+									</a> <a href="${delete}" class="btn btn-danger tooltips"
 										data-placement="top" data-toggle="tooltip"
 										data-original-title="Delete"> <i class="fa fa-close"></i>
 									</a>
