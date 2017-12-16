@@ -1,7 +1,6 @@
 package dev.sgp.web;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.ServletException;
@@ -27,6 +26,11 @@ public class ListerCollaborateursController extends HttpServlet {
 	 * données en mémoire)
 	 */
 	private final CollaborateurService collabService = Constantes.COLLAB_SERVICE;
+	
+	/**
+	 * Constante pour le service technique des départements (sauvegarde des
+	 * données en mémoire)
+	 */
 	private final DepartementService deptService = Constantes.DEPT_SERVICE;
 
 	@Override
@@ -35,36 +39,6 @@ public class ListerCollaborateursController extends HttpServlet {
 		// utilisation des services 
 		List<Departement> departements = deptService.listerDepartements();
 		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
-			// initialisation de la liste des collaborateurs si elle est vide
-		if(collaborateurs.isEmpty()) {
-			Collaborateur collab1 = new Collaborateur();
-			collab1.setNom("César");
-			collab1.setPrenom("Jules");
-			collab1.setAdresse("4 rue Edith Piaf, 44800 Saint-Herblain");
-			collab1.setDateNaissance(LocalDate.of(1985, 10, 14));
-			collab1.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals("Ressources Humaines"))
-					.collect(Collectors.toList()).get(0));
-			collab1.setEmailPro("Jules.César@societe.com");
-			collab1.setIntitulePoste("Directeur");
-			collab1.setMatricule("M" + collaborateurs.size());
-			collab1.setNumSecuSocial("123456789123456");
-			collaborateurs.add(collab1);
-
-			Collaborateur collab2 = new Collaborateur();
-			collab2.setNom("Bono");
-			collab2.setPrenom("Jean");
-			collab2.setActif(false);
-			collab2.setAdresse("4 rue Edith Piaf, 44800 Saint-Herblain");
-			collab2.setDateNaissance(LocalDate.of(1985, 11, 25));
-			collab2.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals("Informatique"))
-					.collect(Collectors.toList()).get(0));
-			collab2.setEmailPro("Jean.Bono@societe.com");
-			collab2.setIntitulePoste("Développeur");
-			collab2.setMatricule("M" + collaborateurs.size());
-			collab2.setNumSecuSocial("123456789123456");
-			collaborateurs.add(collab2);
-		}
-		
 		
 		// Tester s'il n'y a aucun filtre
 		if ((req.getParameter("choixDept") == null || req.getParameter("choixDept").equals("Tous"))
