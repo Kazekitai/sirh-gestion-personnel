@@ -26,7 +26,6 @@ public class SupprimerCollaborateurControlleur  extends HttpServlet {
 		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
 		// recupere la valeur d'un parametre dont le nom est collabMatricule
 		String matricule = req.getParameter("collabMatricule");
-		System.out.println("matricule :" + matricule);
 		
 		// Supprimer le collaborateur de la liste
 		List<Collaborateur> collabs =  collaborateurs.stream().filter(c -> c.getMatricule().equals(matricule)).collect(Collectors.toList());
