@@ -61,7 +61,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>FrequentationFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/collaborateurs/*</url-pattern>
 	</filter-mapping>
 
 </web-app>

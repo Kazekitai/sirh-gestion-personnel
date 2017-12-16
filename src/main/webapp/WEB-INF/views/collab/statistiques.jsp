@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="dev.sgp.entite.Departement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,7 +12,30 @@
 
 </head>
 <body>
-	<h1 style="margin-left: 20px; text-align: center;">Statistiques</h1>
+	<c:url value="/collaborateurs/lister" var="collab"></c:url>
+	<c:url value="statistiques" var="stat"></c:url>
+	<div class="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="logo">
+			<a class="navbar-brand" href="home.html"> <img
+				src="https://bootdey.com/img/Content/user_1.jpg" alt="logo"
+				width="50" height="50" class="img-circle">
+			</a>
+		</div>
+		 
+		<div class="container-fluid">
+			<div class="navbar-header">
+				 <a class="navbar-brand" href="collaborateurs/lister">SGP - App</a>
+			</div>
+			<ul id="randoNavbar" class="nav navbar-nav">
+				<li><a href="${collab}">Collaborateurs</a></li>       
+				<li><a href="${stat}">Statistiques</a></li>      
+			</ul>
+			     
+		</div>
+		</nav>
+	</div>
+	<h1 style="margin-left: 20px; text-align: center; margin-top: 90px;">Statistiques</h1>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -28,15 +50,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="visite" items="${listeVisites}">
+						
+						<c:forEach items="${statObject}" var="item">
 							<tr class="active">
-								<td>${visite.chemin}</td>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
+								<td>${item.get("chemin")}</td>
+								<td>${item.get("nbVisites")}</td>
+								<td>${item.get("min")}</td>
+								<td>${item.get("max")}</td>
+								<td>${item.get("moy")}</td>
 							</tr>
 						</c:forEach>
+
 					</tbody>
 				</table>
 			</div>

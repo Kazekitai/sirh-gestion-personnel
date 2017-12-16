@@ -12,7 +12,8 @@
 	href='<c:url value="/bootstrap-3.3.7-dist/css/bootstrap.css" />' />
 
 </head>
-<body>
+<body style="background-color: lightgray;">
+	<c:url value="lister" var="collab"></c:url>
 	<div id="signupbox" style="margin-top: 50px; width: 50%"
 		class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<div class="panel panel-info">
@@ -98,8 +99,7 @@
 						<div class="col-md-offset-3 col-md-9">
 							<button id="btn-signup" type="submit" class="btn btn-info">
 								<i class="icon-hand-right"></i> &nbsp Créer
-							</button>
-							<span style="margin-left: 8px;"></span>
+							</button><a href="${collab}" class="btn btn-info" style="margin-left: 10px;">Annuler</a>
 						</div>
 					</div>
 

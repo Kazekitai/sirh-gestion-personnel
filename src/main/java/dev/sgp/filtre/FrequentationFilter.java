@@ -44,6 +44,7 @@ public class FrequentationFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+
 		long before = System.currentTimeMillis();
 		chain.doFilter(request, response);
 		long after = System.currentTimeMillis();
@@ -53,7 +54,8 @@ public class FrequentationFilter implements Filter {
 		int tempsExecution = (int) (after - before);
 		visit.setTempsExecution(tempsExecution);
 		statService.sauvegarderVisites(visit);
-		config.getServletContext().log(path + " : " + (after - before));	
+		config.getServletContext().log(path + " : " + (after - before));
+	
 	}
 
 	/**
