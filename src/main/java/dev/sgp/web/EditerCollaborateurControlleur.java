@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.DepartementService;
 import dev.sgp.util.Constantes;
 
+@WebServlet("/collaborateurs/editer")
 public class EditerCollaborateurControlleur extends HttpServlet {
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des

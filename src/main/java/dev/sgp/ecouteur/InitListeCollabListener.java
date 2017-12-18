@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
@@ -17,6 +19,7 @@ import dev.sgp.util.Constantes;
  * @author Sandra Le Thiec
  *
  */
+@WebListener
 public class InitListeCollabListener implements ServletContextListener {
 	
 	/**

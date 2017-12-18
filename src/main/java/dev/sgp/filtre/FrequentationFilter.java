@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import dev.sgp.entite.VisitWeb;
 import dev.sgp.service.StatistiqueService;
@@ -18,6 +19,8 @@ import dev.sgp.util.Constantes;
  * @author Sandra Le Thiec
  *
  */
+@WebFilter(urlPatterns = { "/collaborateurs/*" },
+description = "excution time filter")
 public class FrequentationFilter implements Filter {
 	/**
 	 * Configuration du filtre
