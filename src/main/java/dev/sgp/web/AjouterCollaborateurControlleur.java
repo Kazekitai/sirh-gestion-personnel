@@ -8,10 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
@@ -24,7 +20,6 @@ import dev.sgp.util.Constantes;
  *
  */
 public class AjouterCollaborateurControlleur extends HttpServlet {
-	private final Logger LOG = LoggerFactory.getLogger("logger1");
 	
 	/**
 	 * Constante pour le service technique des collaborateurs (sauvegarde des données en mémoire)
@@ -42,7 +37,7 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// utilisation du service COLLAB_SERVICE
+		// utilisation d'un service
 		List<Departement> departements = deptService.listerDepartements();
 		req.setAttribute("listeDepartement",departements);
 		req.getRequestDispatcher("/WEB-INF/views/collab/ajouterCollaborateur.jsp").forward(req, resp);
@@ -55,6 +50,9 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Departement> departements = deptService.listerDepartements();
+		// recupere la valeur d'un parametre dont le nom est civilite
+		String civilite = req.getParameter("civilite");
+		
 		// recupere la valeur d'un parametre dont le nom est nom
 		String nom = req.getParameter("nom");
 
@@ -79,11 +77,15 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 		resp.setContentType("text/html");
 		String msg = "";
 		if (numSecuSocial == null || numSecuSocial.equals("") || numSecuSocial.length() != 15 || !numSecuSocial.matches("[0-9]+") 
+				|| civilite == null || civilite.equals("")
 				|| nom == null || nom.equals("") || prenom == null || prenom.equals("") || dateNaissance == null || dateNaissance.equals("") 
 				|| adresse == null || adresse.equals("") || departement == null || departement.equals("") 
 				||  intitulePoste == null || intitulePoste.equals("") ) {
 			resp.setStatus(400);
 			msg += "<br>Les paramètres suivants sont incorrects: " + "<ul>";
+			if (civilite == null || nom.equals("")) {
+				msg += "<li>civilite</li>";
+			}
 			if (nom == null || nom.equals("")) {
 				msg += "<li>nom</li>";
 			}
@@ -128,6 +130,12 @@ public class AjouterCollaborateurControlleur extends HttpServlet {
 			collab.setPrenom(prenom);
 			collab.setNumSecuSocial(numSecuSocial);
 			collab.setIntitulePoste(intitulePoste);
+			collab.setCivilite(civilite);
+			if(collab.getCivilite().equals("Mme")) {
+				collab.setPhoto("https://bootdey.com/img/Content/user_2.jpg");
+			} else {
+				collab.setPhoto("https://bootdey.com/img/Content/user_1.jpg");
+			}
 			collab.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals(departement)).collect(Collectors.toList()).get(0));
 			
 			collabService.sauvegarderCollaborateur(collab);

@@ -30,6 +30,15 @@
 						<span></span>
 					</div>
 					<div class="form-group">
+						<label for="civilite" class="col-md-3 control-label form-label">Civilité</label>
+						<div class="col-md-9">
+							<select type="text" class="form-control" name="civilite">
+								<option value="Mr" selected>Mr</option>
+								<option value="Mme" selected>Mme</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="nom" class="col-md-3 control-label form-label">Nom</label>
 						<div class="col-md-9">
 							<input type="text" class="form-control" name="nom"

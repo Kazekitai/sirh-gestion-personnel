@@ -102,6 +102,9 @@
 				<c:url value="supprimer" var="delete">
 					<c:param name="collabMatricule" value="${collab.matricule}" />
 				</c:url>
+				<c:url value="editer" var="update">
+					<c:param name="collabMatricule" value="${collab.matricule}" />
+				</c:url>
 				<div class="col-sm-6">
 					<div class="panel">
 						<div class="panel-body p-t-10">
@@ -110,7 +113,7 @@
 									class="thumb-lg img-circle bx-s" src="${collab.photo}" alt="">
 								</a>
 								<div class="pull-right btn-group-sm">
-									<a href="#" class="btn btn-success tooltips"
+									<a href="${update}" class="btn btn-success tooltips"
 										data-placement="top" data-toggle="tooltip"
 										data-original-title="Edit"> <i class="fa fa-pencil"></i>
 									</a> <a href="${delete}" class="btn btn-danger tooltips"
@@ -119,7 +122,7 @@
 									</a>
 								</div>
 								<div class="info">
-									<h4>${collab.prenom}${collab.nom}</h4>
+									<h4>${collab.civilite} ${collab.prenom} ${collab.nom}</h4>
 									<p class="text-muted">Fonction : ${collab.intitulePoste}</p>
 									<p class="text-muted">Département :
 										${collab.departement.nom}</p>

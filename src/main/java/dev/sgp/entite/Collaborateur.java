@@ -72,6 +72,27 @@ public class Collaborateur {
 	 */
 	private Departement departement;
 	
+	/**
+	 * Civilité du collaborateur
+	 */
+	private String civilite;
+	
+	/**
+	 * Une banque
+	 */
+	private String banque;
+	
+	/**
+	 * Un bic
+	 */
+	private String bic;
+	
+	/**
+	 * Un ban
+	 */
+	private String ban;
+	
+	
 	
 	/* CONSTRUCTEUR */
 	
@@ -252,6 +273,56 @@ public class Collaborateur {
 	 */
 	public void setActif(Boolean actif) {
 		this.actif = actif;
+	}
+
+	public String getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
+	}
+
+	/**
+	 * @return the banque
+	 */
+	public String getBanque() {
+		return banque;
+	}
+
+	/**
+	 * @param banque the banque to set
+	 */
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+	/**
+	 * @return the bic
+	 */
+	public String getBic() {
+		return bic;
+	}
+
+	/**
+	 * @param bic the bic to set
+	 */
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+	/**
+	 * @return the ban
+	 */
+	public String getBan() {
+		return ban;
+	}
+
+	/**
+	 * @param ban the ban to set
+	 */
+	public void setBan(String ban) {
+		this.ban = ban;
 	}
 	
 	

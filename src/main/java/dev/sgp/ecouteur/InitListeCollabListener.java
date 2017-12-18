@@ -39,6 +39,7 @@ public class InitListeCollabListener implements ServletContextListener {
 		List<Departement> departements = deptService.listerDepartements();
 		List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
 		Collaborateur collab1 = new Collaborateur();
+		collab1.setCivilite("Mr");
 		collab1.setNom("César");
 		collab1.setPrenom("Jules");
 		collab1.setAdresse("4 rue Edith Piaf, 44800 Saint-Herblain");
@@ -49,6 +50,7 @@ public class InitListeCollabListener implements ServletContextListener {
 		collab1.setIntitulePoste("Directeur");
 		collab1.setMatricule("M" + collaborateurs.size());
 		collab1.setNumSecuSocial("123456789123456");
+		collab1.setPhoto("https://bootdey.com/img/Content/user_1.jpg");
 		collaborateurs.add(collab1);
 
 		Collaborateur collab2 = new Collaborateur();
@@ -63,7 +65,40 @@ public class InitListeCollabListener implements ServletContextListener {
 		collab2.setIntitulePoste("Développeur");
 		collab2.setMatricule("M" + collaborateurs.size());
 		collab2.setNumSecuSocial("123456789123456");
+		collab2.setPhoto("https://bootdey.com/img/Content/user_1.jpg");
 		collaborateurs.add(collab2);
+		
+		Collaborateur collab3 = new Collaborateur();
+		collab3.setCivilite("Mme");
+		collab3.setNom("Smith");
+		collab3.setPrenom("Lucie");
+		collab3.setActif(true);
+		collab3.setAdresse("4 rue Edith Piaf, 44800 Saint-Herblain");
+		collab3.setDateNaissance(LocalDate.of(1980, 11, 01));
+		collab3.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals("Informatique"))
+				.collect(Collectors.toList()).get(0));
+		collab3.setEmailPro("Lucie.Smith@societe.com");
+		collab3.setIntitulePoste("Développeuse");
+		collab3.setMatricule("M" + collaborateurs.size());
+		collab3.setNumSecuSocial("123456789123456");
+		collab3.setPhoto("https://bootdey.com/img/Content/user_2.jpg");
+		collaborateurs.add(collab3);
+		
+		Collaborateur collab4 = new Collaborateur();
+		collab4.setCivilite("Mme");
+		collab4.setNom("Sim");
+		collab4.setPrenom("Sophie");
+		collab4.setActif(false);
+		collab4.setAdresse("4 rue Edith Piaf, 44800 Saint-Herblain");
+		collab4.setDateNaissance(LocalDate.of(1985, 06, 12));
+		collab4.setDepartement((Departement) departements.stream().filter(d -> d.getNom().equals("Comptabilié"))
+				.collect(Collectors.toList()).get(0));
+		collab4.setEmailPro("Sophie.Sim@societe.com");
+		collab4.setIntitulePoste("Secrétaire");
+		collab4.setMatricule("M" + collaborateurs.size());
+		collab4.setNumSecuSocial("123456789123456");
+		collaborateurs.add(collab4);
+		collab4.setPhoto("https://bootdey.com/img/Content/user_2.jpg");
 		
 		contexte.setAttribute("ListeCollaborateur", collaborateurs);
 		
